@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
 	int start = 0;
 	int end = 0;
 
-    for (int i = 1; i < argc; i+=2)
+    for (int i = 1; i < argc; i += 2)
     {
         start = std::atoi(argv[i]);
         end = std::atoi(argv[i+1]);
