@@ -1,5 +1,5 @@
-#include "numbers.dat"
 #include <iostream>
+#include "numbers.dat"
 
 bool isprime(int n);
 
