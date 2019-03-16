@@ -79,9 +79,9 @@ int main(int argc, char* argv[])
 
 	 	    	if (buf > end)
 	 	    		break;
-			}
-	    else
-			check=0;
+            }
+        else
+            check=0;
 
 	    if (check >= 2)
 	    	std::cout << cnt << std::endl;
