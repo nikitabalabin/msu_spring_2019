@@ -48,48 +48,48 @@ int main(int argc, char* argv[])
 	int start = 0;
 	int end = 0;
 
-    for (int i = 1; i < argc; i += 2)
-    {
-        start = std::atoi(argv[i]);
-        end = std::atoi(argv[i+1]);
+	for (int i = 1; i < argc; i += 2)
+	{
+		start = std::atoi(argv[i]);
+		end = std::atoi(argv[i+1]);
 
-        cnt = 0;
-        check = 0;
+		cnt = 0;
+		check = 0;
 
-        if (end <= Data[Size-1])	
-	        for (int j = 0; j < Size; j++)
-	        {
-		    	buf = Data[j];
+		if (end <= Data[Size-1])	
+			for (int j = 0; j < Size; j++)
+			{
+				buf = Data[j];
 
-		    	if ((buf >= start) && (buf <= end))
-		    	{
-		    		if (buf == start)
-		    			check++;
+				if ((buf >= start) && (buf <= end))
+				{
+					if (buf == start)
+						check++;
 
-		    		if (buf == end)
-		    			check++;
+					if (buf == end)
+						check++;
 
-	 	    		if (isprime(buf))
-	 	    			cnt++;
-	 	    	}
+					if (isprime(buf))
+						cnt++;
+				}
 
-	 	    	// Прервать, если start не входит в Data.
-	 	    	if ((buf > start) && (check < 1))
-	 	    		break;
+				// Прервать, если start не входит в Data.
+				if ((buf > start) && (check < 1))
+					break;
 
-	 	    	if (buf > end)
-	 	    		break;
+				if (buf > end)
+					break;
 
 			}
-	    else
+		else
 			check=0;
 
-	    if (check >= 2)
-	    	std::cout << cnt << std::endl;
-	    else
-	    	std::cout << 0 << std::endl;
+		if (check >= 2)
+			std::cout << cnt << std::endl;
+		else
+			std::cout << 0 << std::endl;
 
-    }
+	}
 
-    return 0;
+	return 0;
 }
