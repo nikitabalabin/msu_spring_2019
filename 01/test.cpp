@@ -1,12 +1,45 @@
 #include "numbers.dat"
 #include <iostream>
 
-bool isprime(int n);
+int findPosition(const int arr[], int l, int r, int x, bool position);
+bool isPrime(int n);
 
-bool isprime(int n)
+int findPosition(const int arr[], int l, int r, int x, bool position)
+{
+	// position == true -- findFirst
+	// postitin == false -- findLast
+	
+	int mid = 0;
+	int midValue = 0;
+	int found = -1;
+
+	while (l <= r)
+	{
+		mid = l + (r - l) / 2;
+		midValue = arr[mid];
+	
+		if (midValue < x)
+			l = mid + 1;
+		else if (midValue > x)
+			r = mid - 1;
+		else 
+		{
+			found = mid;
+			if (position)
+				r = mid - 1;
+			else
+				l = mid + 1;
+		}
+	}
+
+	return found; 
+}
+
+
+bool isPrime(int n)
 {
 	
-	// Пользуемся тем, что простые числа, 
+	// Пользуемся тем, что простые числа,
 	// которые больше 3, имеют вид 6k-1 или 6k+1.
 	
 	if (n == 2)
@@ -36,58 +69,33 @@ bool isprime(int n)
 	return true;
 }
 
+
+
 int main(int argc, char* argv[])
 {
 	// Проверка корректности ввода.
 	if ((argc % 2 == 0) || (argc ==1))
 		return -1;
 
-	int buf = 0;
+	int value = 0;
 	int cnt = 0;
-	int check = 0;
-	int start = 0;
-	int end = 0;
+
+	int i_start = 0;
+	int i_end = 0;
 
 	for (int i = 1; i < argc; i += 2)
 	{
-		start = std::atoi(argv[i]);
-		end = std::atoi(argv[i+1]);
+		i_start = findPosition(Data, 0, Size, std::atoi(argv[i]), true);
+		i_end = findPosition(Data, 0, Size, std::atoi(argv[i+1]), false);
 
 		cnt = 0;
-		check = 0;
 
-		if (end <= Data[Size-1])	
-			for (int j = 0; j < Size; j++)
-			{
-				buf = Data[j];
-
-				if ((buf >= start) && (buf <= end))
-				{
-					if (buf == start)
-						check++;
-
-					if (buf == end)
-						check++;
-
-					if (isprime(buf))
+		if ((i_start != -1) && (i_end != -1))
+			for (int j = i_start; j <= i_end; j++)
+				if (isPrime(Data[j]))
 						cnt++;
-				}
 
-				// Прервать, если start не входит в Data.
-				if ((buf > start) && (check < 1))
-					break;
-
-				if (buf > end)
-					break;
-
-			}
-		else
-			check=0;
-
-		if (check >= 2)
-			std::cout << cnt << std::endl;
-		else
-			std::cout << 0 << std::endl;
+		std::cout << cnt << std::endl;
 
 	}
 
