@@ -1,5 +1,5 @@
-#include <iostream>
 #include "numbers.dat"
+#include <iostream>
 
 bool isprime(int n);
 
@@ -56,36 +56,37 @@ int main(int argc, char* argv[])
         cnt = 0;
         check = 0;
 
-        for (int j = 0; j < Size; j++)
-	    {
-	    	buf = Data[j];
+        if (end <= Data[Size-1])	
+	        for (int j = 0; j < Size; j++)
+	        {
+		    	buf = Data[j];
 
-	    	if ((buf >= start) && (buf <= end))
-	    	{
-	    		if (buf == start)
-	    			check++;
+		    	if ((buf >= start) && (buf <= end))
+		    	{
+		    		if (buf == start)
+		    			check++;
 
-	    		if (buf == end)
-	    			check++;
+		    		if (buf == end)
+		    			check++;
 
- 	    		if (isprime(buf))
- 	    			cnt++;
- 	    	}
+	 	    		if (isprime(buf))
+	 	    			cnt++;
+	 	    	}
 
- 	    	// Прервать, если start не входит в Data.
- 	    	if ((buf > start) && (check < 1))
- 	    		break;
+	 	    	// Прервать, если start не входит в Data.
+	 	    	if ((buf > start) && (check < 1))
+	 	    		break;
 
- 	    	if (buf > end)
- 	    		break;
-
-	    }
+	 	    	if (buf > end)
+	 	    		break;
+			}
+	    else
+			check=0;
 
 	    if (check >= 2)
 	    	std::cout << cnt << std::endl;
 	    else
 	    	std::cout << 0 << std::endl;
-
     }
 
     return 0;
