@@ -70,7 +70,6 @@ bool isPrime(int n)
 }
 
 
-
 int main(int argc, char* argv[])
 {
 	// Проверка корректности ввода.
