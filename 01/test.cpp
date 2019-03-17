@@ -1,8 +1,6 @@
 #include "numbers.dat"
 #include <iostream>
 
-int findPosition(const int arr[], int l, int r, int x, bool position);
-bool isPrime(int n);
 
 int findPosition(const int arr[], int l, int r, int x, bool position)
 {
