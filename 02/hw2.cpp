@@ -15,13 +15,14 @@ class Calculator
 	bool cleanUnarMinus();
 	bool doMult();
 	bool doAdd();
-	
+
+	int64_t result = 0;
 	std::string sub_result = "";
 
 public:
-
-	int64_t result = 0;
+	
 	bool calculate(const std::string& s);
+	int64_t getResult() const { return result;}
 };
 
 bool Calculator::isAdd(char x)
@@ -261,13 +262,10 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	std::string s;
 	Calculator calc;
 
-	s = argv[1];
-
-	if (calc.calculate(s))
-		std::cout << calc.result << std::endl;
+	if (calc.calculate(argv[1]))
+		std::cout << calc.getResult() << std::endl;
 	else
 	{
 		std::cout << "error" << std::endl;
