@@ -2,12 +2,13 @@
 #include <mutex>
 #include <condition_variable>
 #include <thread>
+#include <atomic>
 
 std::mutex m;
 std::condition_variable cv;
 
 const int N = 1000000;
-int i = 0;
+static std::atomic<int64_t> i {0};
 
 void ping()
 {
