@@ -37,8 +37,6 @@ void MergeFile(const std::string file_1, const std::string file_2, const std::st
 
 void Sorting(const char* file, size_t num) {
     
-    std::vector<uint64_t> vec(batch_size);
-
     std::ifstream in(file, std::ios::in | std::ios::binary);
 
     uint64_t start = 0;
