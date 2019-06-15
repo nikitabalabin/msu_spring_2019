@@ -12,7 +12,7 @@
 std::string dir_name = "data";
 std::string out_name = "out.bin";
 
-size_t batch_size = 10000;      
+size_t batch_size = 100000;      
 
 void MergeFile(const std::string file_1, const std::string file_2, const std::string file_out ){
     
